@@ -44,6 +44,15 @@ app.get('/todos/:id', (req, res) => {
     }
 });
 
+//GET /todos
+app.get('/todos', (req, res) => {
+    Todo.find().then((todos)=>{
+        res.send(todos)
+    }).catch((e)=>{
+        res.status(400).send();
+    });
+});
+
 app.listen(port, () => {
     console.log(`Started on port ${port}!`);
 });
